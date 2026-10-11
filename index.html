@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#061013">
+<meta property="og:title" content="AI Convergence Lab · Kunsan National University">
+<meta property="og:description" content="Advancing digital health through artificial intelligence.">
+<meta property="og:image" content="images/fr5-robot.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%2712%27 fill=%27%2308876F%27/%3E%3Cpath d=%27M12 13L28 13M12 13L20 28M28 13L20 28%27 stroke=%27white%27 stroke-opacity=%27.6%27 stroke-width=%271.6%27/%3E%3Ccircle cx=%2712%27 cy=%2713%27 r=%273.4%27 fill=%27white%27/%3E%3Ccircle cx=%2728%27 cy=%2713%27 r=%273.4%27 fill=%27white%27/%3E%3Ccircle cx=%2720%27 cy=%2728%27 r=%273.4%27 fill=%27white%27/%3E%3C/svg%3E">
+<style>body{margin:0}</style>
+<title>AI Convergence Lab</title>
+<meta name="description" content="AI Convergence Lab (AI융합실험실), Kunsan National University. Led by Professor Han-Gue Jo. AI and digital health research: brain imaging, wearable sensing, computer vision, medical imaging and human-centred robotics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+/* Layout: aurora-lit "instrument glass" — drifting teal/cyan/amber light behind frosted panels; full-bleed hero with a live 3D neural-brain render behind the claim, alternating project spreads, glass people grid. */
+:root{
+  --bg:#EDF3F2; --bg-2:#E2EBE9; --ink:#0B1C21; --muted:#4D6267; --faint:#7C9095;
+  --glass:rgba(255,255,255,.58); --glass-strong:rgba(255,255,255,.84); --border:rgba(12,42,48,.11); --border-strong:rgba(12,42,48,.2);
+  --accent:#08876F; --accent-2:#1789B0; --signal:#C9741F; --on-accent:#FFFFFF;
+  --orb-1:rgba(16,170,140,.30); --orb-2:rgba(40,150,210,.24); --orb-3:rgba(240,160,70,.20);
+  --shadow:0 18px 50px -24px rgba(10,50,55,.35);
+  --show-light:block; --show-dark:none;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --wrap:1200px; --gutter:clamp(16px,4.5vw,44px); --r:18px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#061013; --bg-2:#0A171B; --ink:#E5F1EF; --muted:#93AAAD; --faint:#64797D;
+  --glass:rgba(17,35,40,.52); --glass-strong:rgba(12,26,30,.86); --border:rgba(150,225,210,.11); --border-strong:rgba(150,225,210,.22);
+  --accent:#3AD2AE; --accent-2:#4CBDE6; --signal:#F3A84F; --on-accent:#04201A;
+  --orb-1:rgba(30,200,160,.22); --orb-2:rgba(50,140,220,.20); --orb-3:rgba(240,150,60,.12);
+  --shadow:0 24px 60px -28px rgba(0,0,0,.8);
+  --show-light:none; --show-dark:block; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#061013; --bg-2:#0A171B; --ink:#E5F1EF; --muted:#93AAAD; --faint:#64797D;
+  --glass:rgba(17,35,40,.52); --glass-strong:rgba(12,26,30,.86); --border:rgba(150,225,210,.11); --border-strong:rgba(150,225,210,.22);
+  --accent:#3AD2AE; --accent-2:#4CBDE6; --signal:#F3A84F; --on-accent:#04201A;
+  --orb-1:rgba(30,200,160,.22); --orb-2:rgba(50,140,220,.20); --orb-3:rgba(240,150,60,.12);
+  --shadow:0 24px 60px -28px rgba(0,0,0,.8);
+  --show-light:none; --show-dark:block; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+body.lock{overflow:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3{font-family:var(--display);line-height:1.06;text-wrap:balance;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:700}
+h3{font-size:1.26rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.kr{font-family:var(--kr);letter-spacing:0}
+.grad{background:linear-gradient(100deg,var(--accent) 10%,var(--accent-2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:24px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.lede{color:var(--muted);font-size:1.12rem;max-width:62ch}
+section{padding-block:clamp(72px,10vw,128px);position:relative}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(36px,5vw,56px)}
+.glass{background:var(--glass);border:1px solid var(--border);border-radius:var(--r);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3)}
+.panel{background:var(--glass);border:1px solid var(--border);border-radius:var(--r)}
+
+/* ---------- Aurora background ---------- */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(1200px 600px at 80% -10%,var(--bg-2),transparent 70%),var(--bg)}
+.aurora i{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
+.aurora i:nth-child(1){width:52vmax;height:52vmax;left:-14vmax;top:-18vmax;background:var(--orb-1);animation:drift1 26s ease-in-out infinite alternate}
+.aurora i:nth-child(2){width:46vmax;height:46vmax;right:-16vmax;top:18vh;background:var(--orb-2);animation:drift2 32s ease-in-out infinite alternate}
+.aurora i:nth-child(3){width:34vmax;height:34vmax;left:30vw;bottom:-18vmax;background:var(--orb-3);animation:drift3 28s ease-in-out infinite alternate}
+.aurora::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);opacity:.6}
+@keyframes drift1{to{transform:translate(12vmax,10vmax) scale(1.1)}}
+@keyframes drift2{to{transform:translate(-10vmax,-6vmax) scale(.9)}}
+@keyframes drift3{to{transform:translate(-8vmax,-10vmax) scale(1.15)}}
+
+/* ---------- Header ---------- */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;padding-block:12px;transition:padding .3s}
+.head-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 16px;border-radius:999px;background:var(--glass-strong);border:1px solid var(--border);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
+.brand svg{flex:none}
+.brand-text{display:grid;line-height:1.12;min-width:0}
+.brand-text b{font-family:var(--display);font-weight:700;font-size:1.02rem;white-space:nowrap}
+.brand-text small{font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:2px;align-items:center}
+.nav a{text-decoration:none;font-size:.92rem;font-weight:500;color:var(--muted);padding:9px 13px;border-radius:999px;transition:color .2s,background .2s}
+.nav a:hover,.nav a.active{color:var(--ink);background:var(--border)}
+.head-actions{display:flex;align-items:center;gap:6px;flex:none}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:var(--glass);color:var(--ink);display:inline-grid;place-items:center;cursor:pointer;transition:transform .25s,background .25s}
+.icon-btn:hover{transform:rotate(-12deg) scale(1.05);background:var(--border)}
+.icon-btn svg{width:19px;height:19px}
+.i-sun{display:var(--show-dark)} .i-moon{display:var(--show-light)}
+.btn-cta{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:.9rem;padding:11px 18px;border-radius:999px;color:var(--on-accent);background:linear-gradient(110deg,var(--accent),var(--accent-2));box-shadow:0 10px 24px -12px var(--accent)}
+.menu-btn{display:none}
+@media (max-width:1000px){
+  .nav,.head-actions .btn-cta{display:none}
+  .menu-btn{display:inline-grid}
+}
+/* Mobile menu sheet */
+.sheet{position:fixed;inset:0;z-index:80;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 24px);background:var(--glass-strong);backdrop-filter:blur(26px) saturate(1.4);-webkit-backdrop-filter:blur(26px) saturate(1.4);display:flex;flex-direction:column;gap:20px;overflow-y:auto}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;padding:8px 8px 8px 16px}
+.sheet nav{display:grid;gap:4px;margin-top:8px}
+.sheet nav a{display:flex;align-items:center;justify-content:space-between;text-decoration:none;font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,8vw,2.4rem);letter-spacing:-.02em;padding:10px 6px;border-bottom:1px solid var(--border);animation:slideIn .5s cubic-bezier(.2,.8,.2,1) both}
+.sheet nav a span{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--muted);letter-spacing:.08em}
+.sheet nav a:nth-child(2){animation-delay:.04s}.sheet nav a:nth-child(3){animation-delay:.08s}.sheet nav a:nth-child(4){animation-delay:.12s}.sheet nav a:nth-child(5){animation-delay:.16s}.sheet nav a:nth-child(6){animation-delay:.2s}.sheet nav a:nth-child(7){animation-delay:.24s}
+.sheet-foot{margin-top:auto;display:grid;gap:10px;color:var(--muted);font-size:.92rem}
+.sheet-foot .btn-cta{justify-content:center;padding:15px}
+@keyframes slideIn{from{transform:translateX(28px)}to{transform:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;margin-top:-84px;min-height:min(94vh,900px);display:flex;align-items:center;padding-block:150px 110px;isolation:isolate}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:-2}
+.hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 82%,transparent) 30%,color-mix(in srgb,var(--bg) 25%,transparent) 58%,transparent 78%),linear-gradient(180deg,transparent 72%,var(--bg) 100%)}
+.hero-inner{width:100%}
+.hero-copy{display:grid;gap:26px;max-width:660px;min-width:0}
+.hero-kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
+.hero-kicker::before{content:"";width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.9rem);font-weight:800;letter-spacing:-.04em;line-height:.98}
+.hero .lede{font-size:clamp(1.04rem,1.5vw,1.18rem);color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:.98rem;padding:14px 22px;border-radius:999px;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;border:0;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{color:var(--on-accent);background:linear-gradient(110deg,var(--accent),var(--accent-2));box-shadow:0 14px 30px -14px var(--accent)}
+.btn-glass{color:var(--ink);background:var(--glass);border:1px solid var(--border-strong);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.btn svg{width:17px;height:17px}
+.disciplines{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.disciplines li{font-size:.84rem;font-weight:600;color:var(--ink);padding:7px 13px;border-radius:999px;background:var(--glass);border:1px solid var(--border-strong);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.disciplines li:first-child,.disciplines li:nth-child(2){color:var(--on-accent);border-color:transparent;background:linear-gradient(110deg,var(--accent),var(--accent-2))}
+.scroll-cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:26px;height:42px;border-radius:14px;border:2px solid var(--border-strong);display:flex;justify-content:center;padding-top:7px}
+.scroll-cue i{width:4px;height:8px;border-radius:2px;background:var(--accent);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{60%{transform:translateY(12px);opacity:.2}}
+@media (max-width:820px){
+  .hero{min-height:0;padding-block:130px 430px;align-items:flex-start}
+  .hero-scrim{background:linear-gradient(180deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 85%,transparent) 52%,color-mix(in srgb,var(--bg) 0%,transparent) 64%,transparent 92%,var(--bg) 100%)}
+  .scroll-cue{display:none}
+}
+
+/* ---------- Marquee ---------- */
+.marquee{border-block:1px solid var(--border);padding-block:18px;overflow:hidden;background:var(--glass)}
+.marquee-track{display:flex;gap:40px;width:max-content;animation:scroll 42s linear infinite}
+.marquee span{font-family:var(--display);font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;color:var(--muted);white-space:nowrap;display:inline-flex;align-items:center;gap:40px}
+.marquee span::after{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--signal))}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center}
+.about-copy{display:grid;gap:20px;min-width:0}
+.about-copy p{color:var(--muted);font-size:1.06rem}
+.about-copy p strong{color:var(--ink);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:6px}
+.fact{padding:16px 18px;display:grid;gap:3px}
+.fact span{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.fact b{font-weight:600;font-size:.97rem;line-height:1.35}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px;min-width:0}
+.collage figure{margin:0;border-radius:22px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.collage img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.collage figure:hover img{transform:scale(1.05)}
+.collage .tall{grid-row:span 2;aspect-ratio:3/4.6}
+.collage .sq{aspect-ratio:1/1}
+.collage figcaption{position:absolute;left:10px;bottom:10px;right:10px;padding:8px 12px;border-radius:12px;font-size:.78rem;font-weight:600;background:var(--glass-strong);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border)}
+.principles{grid-column:2;padding:22px;display:grid;gap:14px;align-content:center}
+.principles div{display:grid;gap:2px}
+.principles b{font-size:.98rem}
+.principles span{font-size:.86rem;color:var(--muted);line-height:1.4}
+@media (max-width:880px){.about-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.facts{grid-template-columns:1fr}}
+
+/* ---------- Research cards ---------- */
+.r-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{position:relative;padding:28px 26px;display:grid;gap:12px;align-content:start;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover{transform:translateY(-5px);border-color:var(--border-strong)}
+.card:hover::before{opacity:1}
+.card .ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 18%,transparent),color-mix(in srgb,var(--accent-2) 18%,transparent));color:var(--accent);border:1px solid var(--border)}
+.card .ic svg{width:28px;height:28px}
+.card p{color:var(--muted);font-size:.96rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tag{font-family:var(--mono);font-size:.69rem;color:var(--muted);border:1px solid var(--border);background:var(--glass);border-radius:6px;padding:3px 8px}
+@media (max-width:980px){.r-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.r-grid{grid-template-columns:1fr}}
+
+/* ---------- Projects ---------- */
+.project{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(72px,10vw,120px)}
+.project:last-child{margin-bottom:0}
+.project.rev .p-media{order:2}
+.p-body{display:grid;gap:16px;min-width:0}
+.status{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--accent);padding:5px 12px;border-radius:999px;justify-self:start;border:1px solid var(--border-strong);background:var(--glass)}
+.p-body h3{font-size:clamp(1.7rem,3vw,2.4rem);letter-spacing:-.025em}
+.p-body>p{color:var(--muted)}
+.steps{display:grid;gap:10px;margin:4px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;font-size:.95rem;counter-increment:s}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;color:var(--on-accent);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.steps li b{display:block}
+.steps li span{color:var(--muted);font-size:.9rem}
+.formula{font-family:var(--mono);font-size:.86rem;padding:12px 16px;border-radius:12px;overflow-x:auto;white-space:nowrap}
+.formula i{color:var(--signal);font-style:normal}
+.bullets{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.bullets li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:.96rem}
+.bullets li::before{content:"";width:10px;height:10px;border-radius:3px;margin-top:8px;background:linear-gradient(135deg,var(--accent),var(--signal));transform:rotate(45deg)}
+.p-media{position:relative;min-width:0}
+.robot-stack{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px;align-items:end}
+.robot-stack figure{margin:0;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);position:relative}
+.robot-stack .robot img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.zoom{all:unset;cursor:zoom-in;display:block;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);position:relative;background:#fff}
+.zoom img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s}
+.zoom:hover img{transform:scale(1.03)}
+.zoom .hint{position:absolute;right:10px;bottom:10px;font-size:.74rem;font-weight:600;padding:6px 10px;border-radius:10px;background:var(--glass-strong);color:var(--ink);border:1px solid var(--border);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.zoom:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.media-cap{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:12px;letter-spacing:.04em}
+/* phones */
+.devices{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:0;padding:20px 0 10px;min-height:420px}
+.phone{width:clamp(140px,17vw,210px);aspect-ratio:540/1170;border-radius:30px;padding:7px;background:linear-gradient(160deg,#2a3b40,#0b1417);box-shadow:0 30px 60px -28px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.08);flex:none;position:relative}
+.phone img{width:100%;height:100%;border-radius:24px;object-fit:cover}
+.phone .l{display:var(--show-light)} .phone .d{display:var(--show-dark)}
+.phone.p1{transform:rotate(-7deg) translateX(26px);z-index:1;animation:tilt1 8s ease-in-out infinite}
+.phone.p2{transform:translateY(-26px);z-index:3;width:clamp(160px,19.5vw,236px)}
+.phone.p3{transform:rotate(7deg) translateX(-26px);z-index:2;animation:tilt2 8s ease-in-out infinite}
+@keyframes tilt1{50%{transform:rotate(-5deg) translate(26px,-8px)}}
+@keyframes tilt2{50%{transform:rotate(5deg) translate(-26px,-8px)}}
+.watches{display:flex;justify-content:center;gap:18px;margin-top:22px;flex-wrap:wrap}
+.watch{width:clamp(96px,11vw,128px);aspect-ratio:1;border-radius:50%;padding:6px;background:linear-gradient(160deg,#3a4b50,#0b1417);box-shadow:0 18px 36px -18px rgba(0,0,0,.6);position:relative}
+.watch img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.watch .l{display:var(--show-light)} .watch .d{display:var(--show-dark)}
+.watch::after{content:"";position:absolute;right:-5px;top:38%;width:6px;height:16px;border-radius:3px;background:#2a3b40}
+.app-name{display:inline-flex;align-items:center;gap:10px}
+.app-name svg{width:30px;height:30px}
+/* brain illustration */
+.brain{border-radius:24px;overflow:hidden;aspect-ratio:4/3;display:grid;place-items:center;box-shadow:var(--shadow);background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--accent) 14%,var(--glass-strong)),var(--glass-strong));border:1px solid var(--border)}
+.brain svg{width:90%;height:auto}
+@media (max-width:900px){.project{grid-template-columns:1fr}.project.rev .p-media{order:0}.devices{min-height:0}}
+@media (max-width:480px){.phone.p1,.phone.p3{width:118px}.phone.p2{width:146px}.phone.p1{transform:rotate(-7deg) translateX(30px)}.phone.p3{transform:rotate(7deg) translateX(-30px)}}
+
+/* ---------- Professor ---------- */
+.pi-card{padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(28px,5vw,60px);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.pi-card::after{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-180px;border-radius:50%;background:var(--orb-2);filter:blur(60px);pointer-events:none}
+.pi-side{display:grid;gap:16px;align-content:start;position:relative;z-index:1}
+.pi-photo{margin:0;aspect-ratio:153/172;border-radius:22px;position:relative;overflow:hidden;padding:4px;background:linear-gradient(150deg,var(--accent),var(--accent-2));box-shadow:var(--shadow)}
+.pi-photo img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+.pi-record{padding:18px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pi-record div{display:grid;gap:2px;align-content:start}
+.pi-record b{font-family:var(--display);font-size:1.9rem;font-weight:800;line-height:1;letter-spacing:-.02em}
+.pi-record span{font-size:.85rem;color:var(--muted);line-height:1.35}
+@media (max-width:560px){.pi-record{grid-template-columns:1fr}}
+.contact-rows{display:grid;gap:8px}
+.crow{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;background:var(--glass);border:1px solid var(--border);font-size:.9rem;min-width:0}
+.crow svg{width:17px;height:17px;flex:none;color:var(--accent)}
+.crow span{min-width:0;overflow-wrap:anywhere}
+.crow a{text-decoration:none}
+.crow a:hover{color:var(--accent)}
+.copy{margin-left:auto;font:inherit;font-size:.74rem;font-weight:600;padding:5px 10px;border-radius:8px;border:1px solid var(--border-strong);background:transparent;color:var(--ink);cursor:pointer;flex:none}
+.pi-main{display:grid;gap:18px;position:relative;z-index:1;min-width:0}
+.pi-main h2{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+.pi-main h2 .kr{font-size:.6em;color:var(--muted);font-weight:500;margin-left:10px}
+.pi-role{color:var(--muted);font-size:1rem}
+.pi-role b{color:var(--ink);font-weight:600}
+.pi-main>p{color:var(--muted);max-width:66ch}
+.pi-main>p strong{color:var(--ink);font-weight:600}
+.pi-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.mini{padding:18px 20px;display:grid;gap:10px;align-content:start}
+.mini h4{margin:0;font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.tl{display:grid;gap:12px;border-left:2px solid var(--border-strong);padding-left:16px}
+.tl div{position:relative;display:grid;gap:1px}
+.tl div::before{content:"";position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 0 3px var(--bg)}
+.tl b{font-size:.93rem;font-weight:600;line-height:1.3}
+.tl span{font-size:.84rem;color:var(--muted);line-height:1.35}
+.metrics{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.metrics th,.metrics td{padding:8px 4px;text-align:right;border-bottom:1px solid var(--border);font-size:.92rem}
+.metrics th:first-child,.metrics td:first-child{text-align:left;color:var(--muted);font-weight:500}
+.metrics thead th{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.08em;color:var(--faint);text-transform:uppercase}
+.metrics td b{font-family:var(--display);font-size:1.2rem}
+.known{display:flex;flex-wrap:wrap;gap:8px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:860px){.pi-card{grid-template-columns:1fr}.pi-photo{max-width:260px}.pi-side{max-width:420px}}
+@media (max-width:560px){.pi-cols{grid-template-columns:1fr}}
+
+/* ---------- People ---------- */
+.group-label{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;display:flex;align-items:center;gap:14px}
+.group-label::after{content:"";flex:1;height:1px;background:var(--border-strong)}
+.people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:40px}
+.person{padding:20px;display:grid;gap:12px;align-content:start;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}
+.person:hover{transform:translateY(-5px);border-color:var(--border-strong)}
+.avatar{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.4rem;color:var(--on-accent);overflow:hidden;background:linear-gradient(135deg,var(--a1,var(--accent)),var(--a2,var(--accent-2)))}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.person .deg{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)}
+.person h3{font-size:1.1rem}
+.person p{font-size:.9rem;color:var(--muted);line-height:1.45}
+.people.duo{grid-template-columns:repeat(2,minmax(0,1fr))}
+.people.duo .person{grid-template-columns:72px minmax(0,1fr);align-items:center;gap:18px}
+.people.duo .person>div:last-child{display:grid;gap:4px;min-width:0}
+.people.masters{grid-template-columns:repeat(3,minmax(0,1fr))}
+.person.feature{grid-column:span 2;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:20px}
+.person.feature .avatar{width:150px;height:180px;border-radius:20px}
+.person.feature>div{display:grid;gap:8px;min-width:0}
+.person:nth-child(4n+2) .avatar{--a1:var(--accent-2);--a2:var(--accent)}
+.person:nth-child(3n) .avatar{--a1:var(--accent);--a2:var(--signal)}
+
+@media (max-width:760px){.people.masters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.people,.people.duo,.people.masters{grid-template-columns:1fr}.person.feature{grid-column:auto;grid-template-columns:110px minmax(0,1fr)}.person.feature .avatar{width:110px;height:136px}}
+
+/* ---------- Publications ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{font:inherit;font-size:.88rem;font-weight:600;border:1px solid var(--border-strong);background:var(--glass);color:var(--muted);padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .25s}
+.filters button:hover{color:var(--ink)}
+.filters button[aria-pressed="true"]{color:var(--on-accent);border-color:transparent;background:linear-gradient(110deg,var(--accent),var(--accent-2))}
+.pub-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pub{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,190px);gap:18px;align-items:center;padding:18px 20px;transition:transform .3s,border-color .3s}
+.pub:hover{transform:translateX(4px);border-color:var(--border-strong)}
+.pub .yr{font-family:var(--display);font-weight:800;font-size:1.25rem;font-variant-numeric:tabular-nums;color:var(--accent)}
+.pub .t{font-weight:600;line-height:1.4;text-decoration:none;display:block}
+.pub a.t:hover{color:var(--accent)}
+.pub .a{font-size:.88rem;color:var(--muted);margin-top:3px}
+.pub .a b{color:var(--ink);font-weight:600}
+.pub .v{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;line-height:1.4}
+@media (max-width:720px){.pub{grid-template-columns:1fr;gap:4px}.pub .v{text-align:left}}
+.more{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+
+/* ---------- News ---------- */
+.news{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.news article{padding:22px;display:grid;gap:10px;align-content:start}
+.news time{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--accent)}
+.news h3{font-size:1.08rem}
+.news p{color:var(--muted);font-size:.92rem}
+@media (max-width:980px){.news{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.news{grid-template-columns:1fr}}
+
+/* ---------- Join + Contact ---------- */
+.join{padding:clamp(28px,5vw,60px);border-radius:30px;position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,56px);box-shadow:var(--shadow)}
+.join::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 0% 0%,var(--orb-1),transparent 70%),radial-gradient(500px 300px at 100% 100%,var(--orb-3),transparent 70%);pointer-events:none}
+.join>*{position:relative}
+.join-copy{display:grid;gap:18px;align-content:start}
+.join-copy h2{font-size:clamp(2rem,4vw,3rem)}
+.join-copy p{color:var(--muted)}
+.tracks{display:grid;gap:10px}
+.join-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.join-cols h4{margin:0 0 10px;font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.join-cols .bullets li{font-size:.92rem;line-height:1.45}
+@media (max-width:560px){.join-cols{grid-template-columns:1fr}}
+.track{padding:16px 18px;border-radius:16px;background:var(--glass);border:1px solid var(--border);display:grid;gap:4px}
+.track b{display:flex;align-items:center;gap:8px}
+.track b em{font-style:normal;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;padding:2px 8px;border-radius:6px;color:var(--on-accent);background:linear-gradient(110deg,var(--accent),var(--accent-2))}
+.track span{color:var(--muted);font-size:.9rem}
+.visit{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:18px;align-items:start;align-self:start;padding:18px;border-radius:20px;background:var(--glass);border:1px solid var(--border)}
+.visit img{border-radius:16px;aspect-ratio:3/5;object-fit:cover;object-position:50% 30%;box-shadow:var(--shadow)}
+.visit-info{display:grid;gap:12px;min-width:0}
+.visit-info div{display:grid;gap:1px}
+.visit-info span{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.visit-info b{font-weight:600;font-size:.95rem;line-height:1.4}
+@media (max-width:880px){.join{grid-template-columns:1fr}}
+@media (max-width:420px){.visit{grid-template-columns:1fr}.visit img{max-width:160px}}
+
+footer{padding-block:40px 56px;color:var(--muted);font-size:.88rem}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1fr);gap:32px;border-top:1px solid var(--border-strong);padding-top:40px;margin-bottom:32px}
+.foot-brand{display:grid;gap:10px;align-content:start}
+.foot-brand b{font-family:var(--display);font-size:1.2rem;color:var(--ink)}
+.foot-brand p{max-width:42ch}
+.foot-links,.foot-contact{display:grid;gap:8px;align-content:start}
+.foot-grid h4{margin:0 0 4px;font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.foot-links a,.foot-contact a{text-decoration:none}
+.foot-links a:hover,.foot-contact a:hover{color:var(--accent)}
+@media (max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center;border-top:1px solid var(--border);padding-top:22px;font-size:.84rem}
+.foot a{color:var(--muted)}
+
+/* ---------- Lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:calc(env(safe-area-inset-top,0px) + 20px) 16px calc(env(safe-area-inset-bottom,0px) + 20px);background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);cursor:zoom-out}
+.lightbox img{max-height:88vh;width:auto;max-width:min(1200px,100%);border-radius:16px;box-shadow:var(--shadow);background:#fff}
+.lightbox .icon-btn{position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:16px}
+
+/* ---------- Motion ---------- */
+.rv{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv:not(.in){transform:translateY(34px)}
+.hero-copy>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy>*:nth-child(2){animation-delay:.07s}.hero-copy>*:nth-child(3){animation-delay:.14s}.hero-copy>*:nth-child(4){animation-delay:.21s}.hero-copy>*:nth-child(5){animation-delay:.28s}
+@keyframes rise{from{transform:translateY(22px)}to{transform:none}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv:not(.in){transform:none}
+}
+</style>
+</head>
+<body>
+
+
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-head" id="siteHead">
+  <div class="wrap">
+    <div class="head-bar">
+      <a class="brand" href="#top" aria-label="AI Convergence Lab, home">
+        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+          <rect x="0" y="0" width="40" height="40" rx="12" fill="url(#lg)"/>
+          <path d="M12 13L28 13M12 13L20 28M28 13L20 28" stroke="var(--on-accent)" stroke-opacity=".55" stroke-width="1.6"/>
+          <circle cx="12" cy="13" r="3.4" fill="var(--on-accent)"/><circle cx="28" cy="13" r="3.4" fill="var(--on-accent)"/><circle cx="20" cy="28" r="3.4" fill="var(--on-accent)"/>
+        </svg>
+        <span class="brand-text"><b>AI Convergence Lab</b><small><span class="kr">AI융합실험실</span> · Kunsan National University</small></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#professor">Professor</a>
+        <a href="#people">People</a>
+        <a href="#publications">Publications</a>
+      </nav>
+      <div class="head-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <a class="btn-cta" href="#join">Join us</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h10"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="sheet-top">
+    <span class="brand-text"><b>AI Convergence Lab</b><small class="kr">AI융합실험실 · 국립군산대학교</small></span>
+    <button class="icon-btn" id="closeBtn" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#about">About <span>LAB</span></a>
+    <a href="#research">Research <span>6 AREAS</span></a>
+    <a href="#projects">Projects <span>FR5 · VITALINK</span></a>
+    <a href="#professor">Professor <span>HAN-GUE JO</span></a>
+    <a href="#people">People <span>11 MEMBERS</span></a>
+    <a href="#publications">Publications <span>PAPERS</span></a>
+    <a href="#contact">Contact <span>VISIT</span></a>
+  </nav>
+  <div class="sheet-foot">
+    <span>hgjo@kunsan.ac.kr · (063) 469-4694</span>
+    <a class="btn-cta" href="#join">Join the lab</a>
+  </div>
+</div>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero" aria-label="Introduction">
+  <canvas id="neural" aria-hidden="true"></canvas>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="hero-kicker">AI Convergence Lab · Kunsan National University</span>
+      <h1>Advancing <span class="grad">digital health</span> through artificial intelligence.</h1>
+      <p class="lede">The AI Convergence Lab at Kunsan National University builds intelligent technology that understands and supports human health. We combine machine learning, computer vision and medical imaging with wearable sensing, Android and Galaxy Watch development, and collaborative robotics, taking ideas from data and algorithms to working systems that are tested with real people.</p>
+      <ul class="disciplines" aria-label="Research disciplines">
+        <li>Artificial intelligence</li><li>Digital health</li><li>Machine learning</li><li>Computer vision</li><li>Medical imaging</li><li>Robotics</li><li>Android &amp; Wear OS</li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-primary" href="#research">Explore our research
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-glass" href="#people">Meet the team</a>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to About"><i></i></a>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Digital health</span><span>Machine learning</span><span>Medical imaging</span><span>Brain connectivity</span><span>Wearable sensing</span><span>Human–robot collaboration</span><span>Computer vision</span><span>Android &amp; Wear OS</span><span>LLMs in healthcare</span><span>Virtual reality</span>
+    <span>Digital health</span><span>Machine learning</span><span>Medical imaging</span><span>Brain connectivity</span><span>Wearable sensing</span><span>Human–robot collaboration</span><span>Computer vision</span><span>Android &amp; Wear OS</span><span>LLMs in healthcare</span><span>Virtual reality</span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy rv">
+      <span class="eyebrow">About the lab</span>
+      <h2>AI and digital health, built on <span class="grad">neuroscience</span>.</h2>
+      <p>The <strong>AI Convergence Lab (AI융합실험실)</strong> is part of the Department of AI Convergence at Kunsan National University and is led by <strong>Professor Han-Gue Jo</strong>. The lab builds on more than a decade of clinical and cognitive neuroscience research in Germany and applies it with modern artificial intelligence.</p>
+      <p>Our work runs from the brain to the bedside to the workplace. We train graph neural networks on fMRI connectivity to find biomarkers of depression, schizophrenia and autism. We apply computer vision and deep learning to medical images. We build Android and Galaxy Watch apps that measure heart-rate variability and stress in real time, and we connect those signals to collaborative robots that adapt to the people beside them.</p>
+      <div class="facts">
+        <div class="fact panel"><span>Department</span><b>AI Convergence, College of Computer Software</b></div>
+        <div class="fact panel"><span>Research fields</span><b>Brain cognitive science · Healthcare</b></div>
+        <div class="fact panel"><span>Lab room</span><b>Engineering Building 3, Room 13506</b></div>
+        <div class="fact panel"><span>Team</span><b>2 PhD · 8 Master's researchers</b></div>
+      </div>
+    </div>
+    <div class="collage rv">
+      <figure class="tall"><img src="images/lab-workstation.webp" alt="GPU workstations in the AI Convergence Lab" width="800" height="1713"><figcaption>GPU workstations for deep learning</figcaption></figure>
+      <figure class="sq"><img src="images/fr5-robot.webp" alt="Fairino FR5 six-axis collaborative robot" width="900" height="1200"><figcaption>Fairino FR5 cobot</figcaption></figure>
+      <div class="principles panel">
+        <div><b>Rigorous measurement</b><span>Validated physiological and neuroimaging signals</span></div>
+        <div><b>Interpretable models</b><span>Explanations clinicians can check</span></div>
+        <div><b>Real-world systems</b><span>Apps and robots tested with people</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Research areas</span>
+      <h2>What we work on</h2>
+      <p class="lede">Six connected directions, from brain imaging to the factory floor.</p>
+    </div>
+    <div class="r-grid">
+      <article class="card glass rv">
+        <div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="6" cy="8" r="2.6"/><circle cx="21" cy="6" r="2.6"/><circle cx="14" cy="15" r="2.6"/><circle cx="6" cy="22" r="2.6"/><circle cx="22" cy="21" r="2.6"/><path d="M8 9.5l4 4M19.5 8l-4 5M12 17l-4 3.5M16 16.5l4 3M8.5 7.6l10-1.2"/></svg></div>
+        <h3>Brain network AI</h3>
+        <p>Graph neural networks and graph autoencoders that learn from resting-state functional connectivity to classify psychiatric disorders and reveal explainable biomarkers.</p>
+        <div class="tags"><span class="tag">GNN</span><span class="tag">fMRI</span><span class="tag">MDD · SZ · ASD</span></div>
+      </article>
+      <article class="card glass rv">
+        <div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="6" width="14" height="16" rx="4.5"/><path d="M10 6V3h8v3M10 22v3h8v-3"/><path d="M9.5 14.5h2.5l1.5-3.5 2 6 1.5-2.5h1.5"/></svg></div>
+        <h3>Wearable digital health</h3>
+        <p>Android and Galaxy Watch apps that stream beat-to-beat intervals, heart-rate variability, skin conductance and blood oxygen for research-grade health monitoring.</p>
+        <div class="tags"><span class="tag">HRV</span><span class="tag">EDA</span><span class="tag">Android · Wear OS</span></div>
+      </article>
+      <article class="card glass rv">
+        <div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 25h12M10 25v-4"/><circle cx="10" cy="18.5" r="2.3"/><path d="M11.5 17l5.5-7.5"/><circle cx="18" cy="8" r="2.3"/><path d="M20 7.5l4.5 2.5M24.5 10v4M24.5 12l2 1.5M24.5 12l-2 1.8"/></svg></div>
+        <h3>Human-robot collaboration</h3>
+        <p>Collaborative robots that adapt their speed to an operator's physiological stress, making shared work safer and more comfortable.</p>
+        <div class="tags"><span class="tag">Fairino FR5</span><span class="tag">Closed loop</span><span class="tag">RealSense</span></div>
+      </article>
+      <article class="card glass rv">
+        <div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2 16c2 0 2-5 4-5s2 9 4 9 2-13 4-13 2 10 4 10 2-5 4-5 2 3 4 3"/></svg></div>
+        <h3>EEG &amp; cognitive neuroscience</h3>
+        <p>Event-related potentials and brain oscillations in emotion, attention, pain, voluntary action and meditation, including simultaneous EEG-fMRI.</p>
+        <div class="tags"><span class="tag">ERP</span><span class="tag">EEG-fMRI</span><span class="tag">DCM</span></div>
+      </article>
+      <article class="card glass rv">
+        <div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h14a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-8l-5 4v-4H4a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3z"/><path d="M6 11h10M6 14.5h6"/><path d="M23 11h1a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3v3l-4-3"/></svg></div>
+        <h3>Language models in healthcare</h3>
+        <p>Evaluating large language models on clinical and counselling tasks, and measuring where benchmark scores fall short of real-world use.</p>
+        <div class="tags"><span class="tag">LLM evaluation</span><span class="tag">Human-AI coding</span></div>
+      </article>
+      <article class="card glass rv">
+        <div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M2 10a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-5l-2-3h-4l-2 3H5a3 3 0 0 1-3-3z"/><circle cx="9" cy="13" r="2"/><circle cx="19" cy="13" r="2"/></svg></div>
+        <h3>Vision &amp; immersive health</h3>
+        <p>Computer vision, medical imaging and virtual reality for assessment, training and therapy, linked to the lab's physiological sensing.</p>
+        <div class="tags"><span class="tag">Computer vision</span><span class="tag">VR</span><span class="tag">Medical imaging</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Featured projects</span>
+      <h2>From signal to system</h2>
+      <p class="lede">Built and tested in our lab, from the sensor on the wrist to the robot on the bench.</p>
+    </div>
+
+    <article class="project">
+      <div class="p-media rv">
+        <div class="robot-stack">
+          <figure class="robot"><img src="images/fr5-robot.webp" alt="Fairino FR5 collaborative robot in the lab" width="900" height="1200"></figure>
+          <button class="zoom" type="button" data-full="images/fr5-pipeline.webp" aria-label="Enlarge the system pipeline diagram">
+            <img src="images/fr5-pipeline.webp" alt="System pipeline: smartwatch signals, stress features on the phone, PC controller, FR5 robot speed adaptation" width="1400" height="1050">
+            <span class="hint">Tap to enlarge</span>
+          </button>
+        </div>
+        <p class="media-cap">FAIRINO FR5 · CLOSED-LOOP STRESS-TO-SPEED PIPELINE</p>
+      </div>
+      <div class="p-body rv">
+        <span class="status">Ongoing · 2026</span>
+        <h3>Stress-aware collaborative robot</h3>
+        <p>A Fairino FR5 cobot hands parts to a worker in a repeating pick-and-place task. A Galaxy Watch tracks the worker's heart-rate variability and skin conductance, and the robot slows down when stress rises.</p>
+        <ol class="steps">
+          <li><div><b>Sense</b><span>Galaxy Watch streams heart rate, beat-to-beat intervals and EDA over Bluetooth LE</span></div></li>
+          <li><div><b>Score</b><span>The phone computes RMSSD and mean EDA against a personal baseline, giving a stress score from 0 to 1</span></div></li>
+          <li><div><b>Control</b><span>A Python controller receives the score as JSON and applies a safety clamp of 10–40% speed</span></div></li>
+          <li><div><b>Adapt</b><span>The FR5 updates its speed through the Fairino SDK over Ethernet</span></div></li>
+        </ol>
+        <div class="formula panel">v<sub>target</sub> = v<sub>max</sub> − <i>S</i> · (v<sub>max</sub> − v<sub>min</sub>)</div>
+      </div>
+    </article>
+
+    <article class="project rev">
+      <div class="p-media rv">
+        <div class="devices">
+          <div class="phone p1"><img class="l" src="images/app-home-light.webp" alt="VitaLink home screen showing calm state and live physiology" width="540" height="1170"><img class="d" src="images/app-home-dark.webp" alt="VitaLink home screen in dark mode" width="540" height="1170"></div>
+          <div class="phone p2"><img class="l" src="images/app-live-light.webp" alt="VitaLink live monitoring with SDNN, RMSSD and last IBI" width="540" height="1170"><img class="d" src="images/app-live-dark.webp" alt="VitaLink live monitoring in dark mode" width="540" height="1170"></div>
+          <div class="phone p3"><img class="l" src="images/app-history-light.webp" alt="VitaLink session history compared with personal baseline" width="540" height="1170"><img class="d" src="images/app-history-dark.webp" alt="VitaLink session history in dark mode" width="540" height="1170"></div>
+        </div>
+        <div class="watches">
+          <div class="watch"><img class="l" src="images/watch-hrv-light.webp" alt="Watch app collecting heart rate and beat interval" width="420" height="420"><img class="d" src="images/watch-hrv-dark.webp" alt="Watch app collecting heart rate and beat interval, dark mode" width="420" height="420"></div>
+          <div class="watch"><img class="l" src="images/watch-spo2-light.webp" alt="Watch app blood oxygen result 99 percent" width="420" height="420"><img class="d" src="images/watch-spo2-dark.webp" alt="Watch app blood oxygen result 97 percent, dark mode" width="420" height="420"></div>
+        </div>
+        <p class="media-cap" style="text-align:center">REAL SCREENS FROM THE PHONE AND GALAXY WATCH APPS · SWITCH THE THEME TO SEE BOTH MODES</p>
+      </div>
+      <div class="p-body rv">
+        <span class="status">Ongoing · 2026</span>
+        <h3 class="app-name">
+          <svg viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="url(#lg)"/><path d="M5 16h5l2-5 3 9 2.5-6 1.5 2h6" fill="none" stroke="var(--on-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          VitaLink
+        </h3>
+        <p>Our wearable research platform: a Galaxy Watch app paired with an Android phone app. It records raw beat-to-beat data through the Samsung Health Sensor SDK and turns it into live, exportable HRV and stress measures.</p>
+        <ul class="bullets">
+          <li>Live heart rate, SDNN, RMSSD and last inter-beat interval</li>
+          <li>Skin conductance (EDA) and on-demand blood oxygen (SpO₂)</li>
+          <li>Stress index from 0 to 100, mapped to robot speed and synced to the FR5</li>
+          <li>Session history compared with a personal baseline</li>
+          <li>Raw IBI and CSV export for offline analysis</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-media rv">
+        <div class="brain">
+          <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a brain functional connectivity graph">
+            <ellipse cx="200" cy="150" rx="160" ry="112" fill="none" stroke="var(--border-strong)" stroke-width="2"/>
+            <line x1="200" y1="42" x2="200" y2="258" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="3 6"/>
+            <g id="brainEdges"></g><g id="brainNodes"></g>
+          </svg>
+        </div>
+        <p class="media-cap">GNN · RESTING-STATE FUNCTIONAL CONNECTIVITY</p>
+      </div>
+      <div class="p-body rv">
+        <span class="status">Published · 2023 – 2026</span>
+        <h3>Graph neural networks for psychiatric brain networks</h3>
+        <p>Brain regions become nodes and their functional connections become edges. Our models learn from these graphs to tell patients from healthy controls, then show which connections drove each decision.</p>
+        <ul class="bullets">
+          <li>Depression and schizophrenia from multi-site resting-state fMRI</li>
+          <li>Autism spectrum disorder on the ABIDE-I and ABIDE-II datasets</li>
+          <li>Explainable connections linked to clinical symptom scores</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= PROFESSOR ================= -->
+<section id="professor">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Principal investigator</span>
+    </div>
+    <div class="pi-card glass rv">
+      <div class="pi-side">
+        <figure class="pi-photo"><img src="images/prof-jo.webp" alt="Professor Han-Gue Jo" width="459" height="516"></figure>
+        <div class="contact-rows">
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><a href="mailto:hgjo@kunsan.ac.kr" id="email">hgjo@kunsan.ac.kr</a></span><button class="copy" type="button" data-copy="hgjo@kunsan.ac.kr">Copy</button></div>
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>(063) 469-4694</span></div>
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Office: Engineering Building 3, Room 13509</span></div>
+        </div>
+      </div>
+      <div class="pi-main">
+        <h2>Prof. Han-Gue Jo<span class="kr">조한규 교수</span></h2>
+        <p class="pi-role"><b>Professor</b>, Department of AI Convergence · College of Computer Software, Kunsan National University</p>
+        <p>Professor Jo's research connects <strong>human neuroscience</strong> with <strong>artificial intelligence</strong>. His fields are IT convergence technology, brain cognitive science and AI, and medical informatics. He studies the brain and body with EEG, fMRI and wearable sensors, and develops AI methods for mental and physical healthcare.</p>
+        <p>He earned his PhD in brain cognitive science at European University Viadrina in Germany. He then worked as a researcher in the Department of Psychiatry, Psychotherapy and Psychosomatics at University Hospital RWTH Aachen on schizophrenia, depression, emotion and chronic pain. His research has been funded by the National Research Foundation of Korea (NRF), the German Research Foundation (DFG), RWTH Aachen University and the Bial Foundation.</p>
+        <div class="pi-record panel">
+          <div><b>30+</b><span>Journal papers in Korea and abroad</span></div>
+          <div><b>25</b><span>SCI-indexed papers</span></div>
+          <div><b>4</b><span>Major funders: NRF, DFG, RWTH Aachen, Bial Foundation</span></div>
+        </div>
+        <div class="pi-cols">
+          <div class="mini panel">
+            <h4>Education</h4>
+            <div class="tl">
+              <div><b>PhD, Brain Cognitive Science</b><span>European University Viadrina, Germany</span></div>
+              <div><b>MS, Information Systems</b><span>Yonsei University, Korea</span></div>
+              <div><b>BS, Computer &amp; Information Communication Engineering</b><span>Kongju National University, Korea</span></div>
+            </div>
+          </div>
+          <div class="mini panel">
+            <h4>Career</h4>
+            <div class="tl">
+              <div><b>Kunsan National University</b><span>Professor, Dept. of AI Convergence · Director, AI Convergence Lab</span></div>
+              <div><b>University Hospital RWTH Aachen, Germany</b><span>Researcher, Psychiatry, Psychotherapy and Psychosomatics</span></div>
+              <div><b>Doctoral research, Germany</b><span>EEG studies of intention, attention and meditation with University of Freiburg collaborators</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pi-cols">
+          <div class="mini panel">
+            <h4>Industry collaboration</h4>
+            <div class="tl">
+              <div><b>IT convergence</b><span>AI, big data and smart healthcare</span></div>
+              <div><b>Brain signals</b><span>Processing, analysis and interpretation</span></div>
+              <div><b>AI models</b><span>Training and inference model development</span></div>
+            </div>
+          </div>
+          <div class="mini panel">
+            <h4>Google Scholar</h4>
+            <table class="metrics">
+              <thead><tr><th scope="col">Metric</th><th scope="col">All</th><th scope="col">Since 2021</th></tr></thead>
+              <tbody>
+                <tr><td>Citations</td><td><b>1,235</b></td><td>699</td></tr>
+                <tr><td>h-index</td><td><b>16</b></td><td>15</td></tr>
+                <tr><td>i10-index</td><td><b>24</b></td><td>22</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="known">
+          <span class="tag">Readiness potential &amp; voluntary action</span><span class="tag">Mindfulness EEG</span><span class="tag">Psychiatric GNN biomarkers</span><span class="tag">Pain neuroimaging</span><span class="tag">Emotion &amp; face processing</span>
+        </div>
+        <div class="links">
+          <a class="btn btn-primary" href="https://scholar.google.com/citations?user=n7WXdjEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn btn-glass" href="https://www.researchgate.net/scientific-contributions/Han-Gue-Jo-2034131740" target="_blank" rel="noopener">ResearchGate</a>
+          <a class="btn btn-glass" href="https://www.kunsan.ac.kr/ai/index.kunsan?menuCd=DOM_000012502000000000" target="_blank" rel="noopener">University profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PEOPLE ================= -->
+<section id="people">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">People</span>
+      <h2>The team</h2>
+      <p class="lede">An international group of graduate researchers working across AI and digital health.</p>
+    </div>
+    <!-- To add a photo: put the file in images/ and replace the initials inside .avatar with <img src="images/name.webp" alt="Name"> -->
+    <p class="group-label">PhD students</p>
+    <div class="people duo">
+      <article class="person glass rv"><div class="avatar">CL</div><div><span class="deg">PhD student</span><h3>Chaudhry Lakshy</h3><p>Artificial intelligence, digital health</p></div></article>
+      <article class="person glass rv"><div class="avatar">MH</div><div><span class="deg">PhD student</span><h3>Ming Hau</h3><p>Artificial intelligence, digital health</p></div></article>
+    </div>
+    <p class="group-label">Master's students</p>
+    <div class="people masters">
+      <article class="person feature glass rv"><div class="avatar"><img src="images/zeeshan.webp" alt="Zeeshan Muhammad" width="600" height="782"></div><div><span class="deg">Master's student</span><h3>Zeeshan Muhammad</h3><p>Wearable HRV sensing (VitaLink), stress-aware human-robot collaboration, computer vision and LLMs in healthcare</p></div></article>
+      <article class="person glass rv"><div class="avatar">HM</div><span class="deg">Master's student</span><h3>Hamza Muhammad</h3><p>Artificial intelligence, digital health</p></article>
+      <article class="person glass rv"><div class="avatar">AU</div><span class="deg">Master's student</span><h3>Aman Ullah</h3><p>Artificial intelligence, digital health</p></article>
+      <article class="person glass rv"><div class="avatar">HS</div><span class="deg">Master's student</span><h3>Hassan Shayyan</h3><p>Artificial intelligence, digital health, graph neural networks for brain connectivity</p></article>
+      <article class="person glass rv"><div class="avatar">H</div><span class="deg">Master's student</span><h3>Hania</h3><p>Artificial intelligence, digital health</p></article>
+      <article class="person glass rv"><div class="avatar">T</div><span class="deg">Master's student</span><h3>Tandah</h3><p>Artificial intelligence, digital health</p></article>
+      <article class="person glass rv"><div class="avatar">J</div><span class="deg">Master's student</span><h3>Jackson</h3><p>Virtual reality, artificial intelligence, digital health</p></article>
+      <article class="person glass rv"><div class="avatar">AY</div><span class="deg">Master's student</span><h3>Ali Yaqub</h3><p>Artificial intelligence, digital health</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Publications</span>
+      <h2>Selected publications</h2>
+      <p class="lede">Work by Professor Jo and lab members. <b>Bold</b> marks lab authors.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter publications by topic">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="graph" aria-pressed="false">Brain networks &amp; AI</button>
+      <button type="button" data-f="eeg" aria-pressed="false">EEG &amp; neuroimaging</button>
+      <button type="button" data-f="llm" aria-pressed="false">LLMs</button>
+      <button type="button" data-f="net" aria-pressed="false">Networks</button>
+    </div>
+    <ol class="pub-list" id="pubList">
+      <li class="pub glass" data-topic="graph"><span class="yr">2026</span><div><a class="t" href="https://www.researchgate.net/publication/413538181_Graph_Neural_Network-Based_Modeling_of_Functional_Brain_Connectivity_in_Autism_Spectrum_Disorder_Using_the_ABIDE-I_and_II_Datasets" target="_blank" rel="noopener">Graph neural network-based modeling of functional brain connectivity in autism spectrum disorder using the ABIDE-I and II datasets</a><p class="a">J.-W. Lee, <b>H. Shayan</b>, <b>H.-G. Jo</b></p></div><span class="v">Psychiatry Research: Neuroimaging</span></li>
+      <li class="pub glass" data-topic="graph"><span class="yr">2026</span><div><a class="t" href="https://www.researchgate.net/publication/411988328_Machine_learning-based_integration_of_surface_morphometric_features_identifies_diagnostic_and_symptom-related_cortical_signatures_of_schizophrenia" target="_blank" rel="noopener">Machine learning-based integration of surface morphometric features identifies diagnostic and symptom-related cortical signatures of schizophrenia</a><p class="a"><b>H.-G. Jo</b>, M. Votinov, P. Hüpen, …, U. Habel</p></div><span class="v">Schizophrenia Research</span></li>
+      <li class="pub glass" data-topic="llm"><span class="yr">2026</span><div><a class="t" href="https://www.researchgate.net/publication/403470716_Large_Language_Model-Based_Classification_of_Social-Justice_Advocacy_Competencies_Concordance_with_Human_Qualitative_Coding" target="_blank" rel="noopener">Large language model-based classification of social-justice advocacy competencies: concordance with human qualitative coding</a><p class="a">N. Shin, <b>H.-G. Jo</b></p></div><span class="v">Korean Institute of Smart Media</span></li>
+      <li class="pub glass" data-topic="graph"><span class="yr">2026</span><div><a class="t" href="https://www.researchgate.net/publication/401723161_Graph_Autoencoder-Based_Latent_Learning_Identifies_Depression-related_Functional_Network" target="_blank" rel="noopener">Graph autoencoder-based latent learning identifies depression-related functional network</a><p class="a">Y.-E. Kim, H. B. Bae, <b>H.-G. Jo</b></p></div><span class="v">Korean Institute of Smart Media</span></li>
+      <li class="pub glass" data-topic="graph"><span class="yr">2025</span><div><a class="t" href="https://www.researchgate.net/publication/394875281_Characterizing_Psychiatric_Disorders_Through_Graph_Neural_Networks_A_Functional_Connectivity_Analysis_of_Depression_and_Schizophrenia" target="_blank" rel="noopener">Characterizing psychiatric disorders through graph neural networks: a functional connectivity analysis of depression and schizophrenia</a><p class="a">J.-W. Lee, Y.-E. Kim, M. Votinov, …, <b>H.-G. Jo</b></p></div><span class="v">Depression and Anxiety</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2025</span><div><a class="t" href="https://www.researchgate.net/publication/388737954_Identifying_P100_and_N170_as_electrophysiological_markers_for_conscious_and_unconscious_processing_of_emotional_facial_expressions" target="_blank" rel="noopener">Identifying P100 and N170 as electrophysiological markers for conscious and unconscious processing of emotional facial expressions</a><p class="a">L. Herzberg, J. Schräder, <b>H.-G. Jo</b>, …, L. Wagels</p></div><span class="v">Frontiers in Behavioral Neuroscience</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2025</span><div><a class="t" href="https://www.researchgate.net/publication/388102802_Altered_brain_dynamics_of_facial_emotion_processing_in_schizophrenia_a_combined_EEGfMRI_study" target="_blank" rel="noopener">Altered brain dynamics of facial emotion processing in schizophrenia: a combined EEG/fMRI study</a><p class="a">P. Hüpen, B. Schulte Holthausen, C. Regenbogen, …, U. Habel</p></div><span class="v">Schizophrenia</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2025</span><div><a class="t" href="https://www.researchgate.net/publication/392997064_Reduced_functional_resting-state_connectivity_in_chronic_pain_patients_with_small_fiber_neuropathy" target="_blank" rel="noopener">Reduced functional resting-state connectivity in chronic pain patients with small fiber neuropathy</a><p class="a">S. Scheliga, <b>H.-G. Jo</b>, M. F. Dohrn, …, U. Habel</p></div><span class="v">Journal of Pain</span></li>
+      <li class="pub glass" data-topic="net"><span class="yr">2024</span><div><a class="t" href="https://www.researchgate.net/publication/383036555_Slice-aware_5G_network_orchestration_framework_based_on_dual-slice_isolation_and_management_strategy_D-SIMS" target="_blank" rel="noopener">Slice-aware 5G network orchestration framework based on dual-slice isolation and management strategy (D-SIMS)</a><p class="a">S. Venkatapathy, T. Srinivasan, O.-S. Lee, …, I. Ra</p></div><span class="v">Scientific Reports</span></li>
+      <li class="pub glass" data-topic="graph"><span class="yr">2023</span><div><a class="t" href="https://www.researchgate.net/publication/369484205_Ensemble_graph_neural_network_model_for_classification_of_major_depressive_disorder_using_whole-brain_functional_connectivity" target="_blank" rel="noopener">Ensemble graph neural network model for classification of major depressive disorder using whole-brain functional connectivity</a><p class="a">S. Venkatapathy, M. Votinov, L. Wagels, …, <b>H.-G. Jo</b></p></div><span class="v">Frontiers in Psychiatry</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2019</span><div><a class="t" href="https://scholar.google.com/scholar?q=Phase+synchrony+in+slow+cortical+potentials+is+decreased+in+both+expert+and+trained+novice+meditators" target="_blank" rel="noopener">Phase synchrony in slow cortical potentials is decreased in both expert and trained novice meditators</a><p class="a"><b>H.-G. Jo</b>, J. R. Naranjo, T. Hinterberger, U. Winter, S. Schmidt</p></div><span class="v">Neuroscience Letters</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2017</span><div><a class="t" href="https://doi.org/10.3389/fnhum.2017.00299" target="_blank" rel="noopener">Frontal theta dynamics during response conflict in long-term mindfulness meditators</a><p class="a"><b>H.-G. Jo</b>, P. Malinowski, S. Schmidt</p></div><span class="v">Frontiers in Human Neuroscience</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2016</span><div><a class="t" href="https://scholar.google.com/scholar?q=Meditation+and+attention+A+controlled+study+on+long-term+meditators+in+behavioral+performance+and+event-related+potentials+of+attentional+control" target="_blank" rel="noopener">Meditation and attention: a controlled study on long-term meditators in behavioral performance and event-related potentials of attentional control</a><p class="a"><b>H.-G. Jo</b>, S. Schmidt, E. Inacker, M. Markowiak, T. Hinterberger</p></div><span class="v">International Journal of Psychophysiology</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2016</span><div><a class="t" href="https://scholar.google.com/scholar?q=Rolandic+beta-band+activity+correlates+with+decision+time+to+move" target="_blank" rel="noopener">Rolandic beta-band activity correlates with decision time to move</a><p class="a"><b>H.-G. Jo</b>, T. Hinterberger, M. Wittmann, S. Schmidt</p></div><span class="v">Neuroscience Letters</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2014</span><div><a class="t" href="https://doi.org/10.3389/fnhum.2014.00421" target="_blank" rel="noopener">The readiness potential reflects intentional binding</a><p class="a"><b>H.-G. Jo</b>, M. Wittmann, T. Hinterberger, S. Schmidt</p></div><span class="v">Frontiers in Human Neuroscience</span></li>
+      <li class="pub glass" data-topic="eeg"><span class="yr">2013</span><div><a class="t" href="https://doi.org/10.1007/s00221-013-3713-z" target="_blank" rel="noopener">Spontaneous EEG fluctuations determine the readiness potential: is preconscious brain activation a preparation process to move?</a><p class="a"><b>H.-G. Jo</b>, T. Hinterberger, M. Wittmann, T. L. Borghardt, S. Schmidt</p></div><span class="v">Experimental Brain Research</span></li>
+    </ol>
+    <div class="more">
+      <a class="btn btn-primary" href="https://scholar.google.com/citations?user=n7WXdjEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Full list on Google Scholar</a>
+      <a class="btn btn-glass" href="https://www.researchgate.net/scientific-contributions/Han-Gue-Jo-2034131740" target="_blank" rel="noopener">ResearchGate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS ================= -->
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">News</span>
+      <h2>Lab updates</h2>
+    </div>
+    <div class="news">
+      <article class="glass rv"><time datetime="2026-10">October 2026</time><h3>New lab website launched</h3><p>A single home for our research, projects, team and publications, with recruiting information for future students.</p></article>
+      <article class="glass rv"><time datetime="2026-09">September 2026</time><h3>VitaLink moves into research use</h3><p>Our Galaxy Watch and Android platform now records complete study sessions: beat-to-beat heart data, HRV, skin conductance and blood oxygen, each compared with the participant's own baseline. It supplies the live stress signal for our robot study.</p></article>
+      <article class="glass rv"><time datetime="2026-08">August 2026</time><h3>Two journal papers published</h3><p>Machine-learning studies of cortical signatures in schizophrenia (Schizophrenia Research) and brain networks in autism (Psychiatry Research: Neuroimaging).</p></article>
+      <article class="glass rv"><time datetime="2026">2026</time><h3>Stress-aware cobot study</h3><p>Our smartwatch-driven FR5 speed adaptation work is prepared for the Korean Institute of Smart Media fall conference.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOIN + CONTACT ================= -->
+<section id="join">
+  <div class="wrap">
+    <div class="join glass rv" id="contact">
+      <div class="join-copy">
+        <span class="eyebrow">We are recruiting</span>
+        <h2>Join the AI Convergence Lab</h2>
+        <p>We are recruiting motivated Master's and PhD students for research-focused graduate study in artificial intelligence and digital health. You will work on real research projects: machine learning on brain imaging, health apps for Android and Galaxy Watch, computer vision and medical imaging, and robots that adapt to the people around them. Applicants from Korea and from around the world are welcome.</p>
+        <div class="join-cols">
+          <div>
+            <h4>What we look for</h4>
+            <ul class="bullets">
+              <li>A degree in computer science, AI, electrical or biomedical engineering, neuroscience or a related field</li>
+              <li>Programming experience, ideally in Python</li>
+              <li>Curiosity about health, the brain and human behaviour</li>
+              <li>Willingness to learn new tools and work in a team</li>
+            </ul>
+          </div>
+          <div>
+            <h4>What you will gain</h4>
+            <ul class="bullets">
+              <li>Hands-on research from data collection to publication</li>
+              <li>GPU workstations, a collaborative robot and smartwatch sensors</li>
+              <li>Close supervision from Professor Jo</li>
+              <li>Experience presenting at conferences and writing journal papers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tracks">
+          <div class="track"><b>Master's &amp; PhD students <em>OPEN</em></b><span>Regular graduate admission at Kunsan National University</span></div>
+          <div class="track"><b>GKS R&amp;D track applicants <em>OPEN</em></b><span>Global Korea Scholarship (GKS) graduate R&amp;D track. Contact Professor Jo before you apply to discuss research fit.</span></div>
+        </div>
+        <p><b>How to apply:</b> email your CV, academic transcripts and a one-page statement of your research interests to <b>hgjo@kunsan.ac.kr</b>. Please mention which of our research areas interests you most.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:hgjo@kunsan.ac.kr?subject=Application%20to%20AI%20Convergence%20Lab">Email Professor Jo</a>
+          <button class="btn btn-glass copy-btn" type="button" data-copy="hgjo@kunsan.ac.kr">Copy email</button>
+        </div>
+      </div>
+      <div class="visit">
+        <img src="images/lab-door.webp" alt="Entrance sign of the AI Convergence Lab, room 13506" width="600" height="1285">
+        <div class="visit-info">
+          <div><span>Lab</span><b>AI Convergence Lab <span class="kr">(AI융합실험실)</span><br>Engineering Building 3, Room 13506</b></div>
+          <div><span>Professor's office</span><b>Engineering Building 3, Room 13509</b></div>
+          <div><span>Address</span><b>Kunsan National University, 558 Daehak-ro, Gunsan-si, Jeonbuk State 54150, Republic of Korea</b></div>
+          <div><span>Phone</span><b>(063) 469-4694</b></div>
+          <a class="btn btn-glass" href="https://www.google.com/maps/search/?api=1&amp;query=Kunsan+National+University" target="_blank" rel="noopener" style="justify-self:start">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>AI Convergence Lab <span class="kr">(AI융합실험실)</span></b>
+        <p>Artificial intelligence for digital health: brain imaging, wearable sensing, computer vision and human-centred robotics.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <h4>Explore</h4>
+        <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#people">People</a><a href="#publications">Publications</a><a href="#join">Join us</a>
+      </nav>
+      <div class="foot-contact">
+        <h4>Contact</h4>
+        <span>Engineering Building 3, Room 13506</span>
+        <span>hgjo@kunsan.ac.kr</span>
+        <span>(063) 469-4694</span>
+        <a href="https://www.kunsan.ac.kr/ai/index.kunsan?menuCd=DOM_000012502000000000" target="_blank" rel="noopener">Department of AI Convergence ↗</a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© <span id="yr">2026</span> AI Convergence Lab <span class="kr">(AI융합실험실)</span>, Department of AI Convergence, Kunsan National University, Gunsan, South Korea.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <img id="lbImg" src="" alt="Enlarged diagram">
+  <button class="icon-btn" id="lbClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement; root.classList.add('js');
+  function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
+
+  /* Theme toggle */
+  var saved=store('acl-theme'); if(saved==='light'||saved==='dark') root.setAttribute('data-theme',saved);
+  function isDark(){ var t=root.getAttribute('data-theme'); if(t) return t==='dark'; return window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  var themeBtn=document.getElementById('themeBtn');
+  function label(){ themeBtn.setAttribute('aria-label', isDark()?'Switch to light theme':'Switch to dark theme'); }
+  label();
+  themeBtn.addEventListener('click',function(){ var next=isDark()?'light':'dark'; root.setAttribute('data-theme',next); store('acl-theme',next); label(); });
+
+  /* Mobile menu */
+  var sheet=document.getElementById('sheet'), menuBtn=document.getElementById('menuBtn'), closeBtn=document.getElementById('closeBtn');
+  function openMenu(o){ sheet.hidden=!o; menuBtn.setAttribute('aria-expanded',o); document.body.classList.toggle('lock',o); if(o) closeBtn.focus(); else menuBtn.focus({preventScroll:true}); }
+  menuBtn.addEventListener('click',function(){ openMenu(true); });
+  closeBtn.addEventListener('click',function(){ openMenu(false); });
+  sheet.addEventListener('click',function(e){ if(e.target.closest('a')) openMenu(false); });
+
+  /* Lightbox */
+  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg');
+  function closeLb(){ lb.hidden=true; document.body.classList.remove('lock'); }
+  document.querySelectorAll('.zoom').forEach(function(z){ z.addEventListener('click',function(){ lbImg.src=z.dataset.full; lbImg.alt=z.querySelector('img').alt; lb.hidden=false; document.body.classList.add('lock'); }); });
+  lb.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(!lb.hidden) closeLb(); if(!sheet.hidden) openMenu(false); } });
+
+  /* Copy email */
+  document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click',function(){
+    var txt=b.dataset.copy, old=b.textContent;
+    function done(){ b.textContent='Copied'; setTimeout(function(){ b.textContent=old; },1600); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done,function(){ sel(); }); } else sel();
+    function sel(){ var r=document.createRange(), el=document.getElementById('email'); r.selectNodeContents(el); var s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent='Selected'; setTimeout(function(){ b.textContent=old; },1600); }
+  }); });
+
+  /* Card spotlight */
+  document.querySelectorAll('.card').forEach(function(c){ c.addEventListener('pointermove',function(e){ var r=c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px'); }); });
+
+  /* Scroll reveal (content is visible at rest; this only adds movement) */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el,i){ var r=el.getBoundingClientRect(); if(r.top<innerHeight) el.classList.add('in'); else { el.style.transitionDelay=((i%4)*70)+'ms'; io.observe(el); } });
+  } else rv.forEach(function(el){ el.classList.add('in'); });
+
+  /* Active nav */
+  var links=[].slice.call(document.querySelectorAll('#nav a'));
+  if('IntersectionObserver' in window){
+    var nio=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting) links.forEach(function(a){ a.classList.toggle('active',a.getAttribute('href')==='#'+en.target.id); }); }); },{rootMargin:'-45% 0px -50% 0px'});
+    ['about','research','projects','professor','people','publications'].forEach(function(id){ var el=document.getElementById(id); if(el) nio.observe(el); });
+  }
+
+  /* Publication filters */
+  var fb=[].slice.call(document.querySelectorAll('.filters button')), pubs=[].slice.call(document.querySelectorAll('#pubList .pub'));
+  fb.forEach(function(b){ b.addEventListener('click',function(){ var f=b.dataset.f; fb.forEach(function(x){ x.setAttribute('aria-pressed',x===b); }); pubs.forEach(function(p){ p.hidden=!(f==='all'||p.dataset.topic===f); }); }); });
+
+  /* Brain graph illustration */
+  var seed=7; function rnd(){ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; }
+  var NS='http://www.w3.org/2000/svg', ge=document.getElementById('brainEdges'), gn=document.getElementById('brainNodes'), bn=[], g=0;
+  while(bn.length<36 && g++<4000){ var x=50+rnd()*300, y=45+rnd()*210; if(((x-200)*(x-200))/(150*150)+((y-150)*(y-150))/(102*102)<1 && Math.abs(x-200)>9) bn.push([x,y]); }
+  bn.forEach(function(a,i){ bn.forEach(function(b,j){ if(j>i){ var d=Math.hypot(a[0]-b[0],a[1]-b[1]); if(d<64){ var l=document.createElementNS(NS,'line'); l.setAttribute('x1',a[0]); l.setAttribute('y1',a[1]); l.setAttribute('x2',b[0]); l.setAttribute('y2',b[1]); var hot=d<36&&i%5===0; l.setAttribute('stroke',hot?'var(--signal)':'var(--accent)'); l.setAttribute('stroke-opacity',hot?'.95':'.4'); l.setAttribute('stroke-width',hot?'2.6':'1.3'); ge.appendChild(l); } } }); });
+  bn.forEach(function(a,i){ var c=document.createElementNS(NS,'circle'); c.setAttribute('cx',a[0]); c.setAttribute('cy',a[1]); c.setAttribute('r',i%5===0?6.5:4.2); c.setAttribute('fill',i%5===0?'var(--signal)':'var(--accent-2)'); gn.appendChild(c); });
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  /* Hero: live 3D neural brain */
+  (function(){
+    var cv=document.getElementById('neural'); if(!cv||!cv.getContext) return;
+    var ctx=cv.getContext('2d'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var W,H,dpr,cx,cy,R,P=[],E=[],pulses=[],rings=[],mx=0,my=0,tx=0,ty=0,running=true,col={};
+    var sd=21; function rnd(){ sd=(sd*16807)%2147483647; return (sd-1)/2147483646; }
+    function readCols(){ var cs=getComputedStyle(root); col.a=cs.getPropertyValue('--accent').trim()||'#3AD2AE'; col.b=cs.getPropertyValue('--accent-2').trim()||'#4CBDE6'; col.s=cs.getPropertyValue('--signal').trim()||'#F3A84F'; }
+    function build(){
+      dpr=Math.min(devicePixelRatio||1,2); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      var mobile=W<820; R=mobile?Math.min(W*.42,220):Math.min(W*.23,H*.34,360); cx=mobile?W*.5:W*.72; cy=mobile?H-R-70:H*.53;
+      P=[];E=[];sd=21; var n=mobile?260:460;
+      for(var i=0;i<n;i++){
+        var hemi=i%2?1:-1, u=rnd()*2-1, th=rnd()*Math.PI*2, s=Math.sqrt(1-u*u);
+        var x=s*Math.cos(th), y=u, z=s*Math.sin(th);
+        var bump=1+.07*Math.sin(5*th+3*u)*Math.cos(6*u)+(rnd()-.5)*.04;
+        if(x*hemi<0) x*=.22;
+        P.push({x:(x*.6*bump)+hemi*.3, y:y*.62*bump-(y<-.55?.08:0), z:z*.92*bump, h:hemi});
+      }
+      for(var a=0;a<P.length;a++){ var best=[]; for(var b=0;b<P.length;b++){ if(a===b) continue; var dx=P[a].x-P[b].x,dy=P[a].y-P[b].y,dz=P[a].z-P[b].z,d=dx*dx+dy*dy+dz*dz; if(best.length<3||d<best[best.length-1][0]){ best.push([d,b]); best.sort(function(m,q){return m[0]-q[0];}); if(best.length>3) best.pop(); } }
+        best.forEach(function(q){ if(q[1]>a) E.push([a,q[1]]); }); }
+      for(var k=0;k<(mobile?14:26);k++){ var i1=Math.floor(rnd()*P.length),i2=Math.floor(rnd()*P.length); if(P[i1].h!==P[i2].h) E.push([i1,i2,1]); }
+      rings=[{r:1.45,tilt:.35,sp:.25,n:5},{r:1.75,tilt:-.5,sp:-.16,n:4}];
+    }
+    function rot(p,ay,ax){ var c=Math.cos(ay),s=Math.sin(ay),x=p.x*c+p.z*s,z=-p.x*s+p.z*c; var c2=Math.cos(ax),s2=Math.sin(ax),y=p.y*c2-z*s2; z=p.y*s2+z*c2; var f=3.2/(3.2+z); return {x:cx+x*R*f,y:cy+y*R*f,z:z,f:f}; }
+    var t0=performance.now(),last=0,frame=0;
+    function draw(now){
+      var t=(now-t0)/1000; if(frame++%30===0) readCols();
+      tx+=(mx-tx)*.04; ty+=(my-ty)*.04;
+      var ay=t*.14+tx*.5, ax=-.18+ty*.3;
+      ctx.clearRect(0,0,W,H);
+      var Q=P.map(function(p){ return rot(p,ay,ax); });
+      var g=ctx.createRadialGradient(cx,cy,R*.1,cx,cy,R*1.5); g.addColorStop(0,col.a); g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.globalAlpha=.10; ctx.fillStyle=g; ctx.fillRect(cx-R*1.6,cy-R*1.6,R*3.2,R*3.2);
+      rings.forEach(function(rg){ ctx.globalAlpha=.22; ctx.strokeStyle=col.b; ctx.lineWidth=1; ctx.beginPath();
+        for(var k=0;k<=64;k++){ var a=k/64*Math.PI*2, q=rot({x:Math.cos(a)*rg.r,y:Math.sin(a)*rg.r*Math.sin(rg.tilt),z:Math.sin(a)*rg.r*Math.cos(rg.tilt)},ay*.4,ax); if(k) ctx.lineTo(q.x,q.y); else ctx.moveTo(q.x,q.y); } ctx.stroke();
+        for(var m=0;m<rg.n;m++){ var a2=t*rg.sp+m/rg.n*Math.PI*2, q2=rot({x:Math.cos(a2)*rg.r,y:Math.sin(a2)*rg.r*Math.sin(rg.tilt),z:Math.sin(a2)*rg.r*Math.cos(rg.tilt)},ay*.4,ax);
+          ctx.globalAlpha=Math.min(1,.55+.3*(1-q2.z)); ctx.fillStyle=m%2?col.s:col.b; ctx.beginPath(); ctx.arc(q2.x,q2.y,2.6*q2.f,0,6.283); ctx.fill(); } });
+      ctx.lineWidth=1;
+      E.forEach(function(e){ var A=Q[e[0]],B=Q[e[1]], dep=(2-(A.z+B.z))/4; ctx.globalAlpha=Math.max(.03,(e[2]?.12:.34)*dep+.03); ctx.strokeStyle=e[2]?col.s:col.a; ctx.beginPath(); ctx.moveTo(A.x,A.y); ctx.lineTo(B.x,B.y); ctx.stroke(); });
+      if(!reduce && now-last>140){ last=now; for(var k2=0;k2<2;k2++) pulses.push({e:E[Math.floor(Math.random()*E.length)],s:0,v:.012+Math.random()*.02}); }
+      pulses=pulses.filter(function(pl){ pl.s+=pl.v; if(pl.s>=1) return false; var A=Q[pl.e[0]],B=Q[pl.e[1]],x=A.x+(B.x-A.x)*pl.s,y=A.y+(B.y-A.y)*pl.s;
+        ctx.globalAlpha=.95; ctx.fillStyle=col.s; ctx.beginPath(); ctx.arc(x,y,2.2,0,6.283); ctx.fill();
+        ctx.globalAlpha=.25; ctx.beginPath(); ctx.arc(x,y,6,0,6.283); ctx.fill(); return true; });
+      Q.forEach(function(q,i){ var dep=(1-q.z)/2+.5; ctx.globalAlpha=Math.max(.15,Math.min(1,.25+.6*dep)); ctx.fillStyle=i%7===0?col.b:col.a; ctx.beginPath(); ctx.arc(q.x,q.y,(i%11===0?2.6:1.6)*q.f,0,6.283); ctx.fill(); });
+      ctx.globalAlpha=1;
+      if(!reduce && running) requestAnimationFrame(draw);
+    }
+    readCols(); build(); requestAnimationFrame(draw);
+    var rt; addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ build(); if(reduce) requestAnimationFrame(draw); },150); });
+    addEventListener('pointermove',function(e){ mx=(e.clientX/innerWidth-.5); my=(e.clientY/innerHeight-.5); },{passive:true});
+    themeBtn.addEventListener('click',function(){ readCols(); if(reduce) requestAnimationFrame(draw); });
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ var vis=es[0].isIntersecting; if(vis&&!running&&!reduce){ running=true; requestAnimationFrame(draw); } else if(!vis) running=false; }).observe(cv); }
+  })();
+})();
+</script>
+
+</body>
+</html>
